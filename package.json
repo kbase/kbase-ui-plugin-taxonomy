@@ -1,0 +1,26 @@
+{
+    "name": "kbase-ui-plugin-re-landing-pages",
+    "version": "1.0.0",
+    "description": "A kbase-ui plugin providing landing pages for the Relation Engine",
+    "main": "index.js",
+    "devDependencies": {
+        "bluebird": "3.7.2",
+        "common-readme": "1.1.0",
+        "fs-extra": "8.1.0",
+        "tar": "6.0.1"
+    },
+    "scripts": {
+        "build": "bash scripts/build-plugin.bash",
+        "install-plugin": "node scripts/install-plugin.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kbase/kbase-ui-plugin-re-landing-pages.git"
+    },
+    "author": "KBase Developers",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "bugs": {
+        "url": "https://github.com/kbase/kbase-ui-plugin-re-landing-pages/issues"
+    },
+    "homepage": "https://github.com/kbase/kbase-ui-plugin-re-landing-pages#readme"
+}

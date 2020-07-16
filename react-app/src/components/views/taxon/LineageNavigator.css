@@ -1,0 +1,22 @@
+.MenuContainer-title {
+    padding: 4px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+.Lineage-target-taxon {
+    font-weight: bold;
+}
+
+
+
+.Lineage-box {
+    border: 1px solid rgba(200, 200, 200, 0.5);
+    margin: 10px 0;
+}
+
+.Lineage-box-title {
+    font-weight: bold;
+    text-align: center;
+}

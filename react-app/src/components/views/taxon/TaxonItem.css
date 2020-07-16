@@ -1,0 +1,40 @@
+.TaxonItem {
+    display: flex;
+    flex-direction: row;
+}
+
+.TaxonItem:hover {
+    background-color: rgba(199, 237, 255, 0.5);
+    /* cursor: pointer; */
+}
+
+.TaxonItem-active,
+.TaxonItem:active {
+    background-color: rgba(199, 237, 255, 1);
+}
+
+.TaxonItem-name {
+    padding: 8px;
+    flex: 1 1 0px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+.TaxonItem-name:hover {
+    background-color: rgba(199, 237, 255, 1);
+    cursor: pointer;
+}
+
+
+.TaxonItem-inspector {
+    padding: 8px;
+    flex: 0 0 3em;
+    text-align: center;
+}
+
+.TaxonItem-inspector:hover {
+    background-color: rgba(199, 237, 255, 1);
+    cursor: pointer;
+}

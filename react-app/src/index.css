@@ -1,0 +1,163 @@
+@import url('antd.css');
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
+    height: 100%;
+    width: 100%;
+    /* font-size: 14px;
+    font-family: 'Oxygen', sans-serif; */
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#root {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} */
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+
+/* Shared styles */
+
+.Row-auto {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+/* TODO: remove Row-fullheight when removed from @kbase/ui-lib */
+.Row,
+.Row-fullheight {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
+}
+
+/* TODO: remove Col-scrollable and Row-scrollable when removed from @kbase/ui-lib */
+
+.scrollable,
+.Row-scrollable,
+.Col-scrollable {
+    min-height: 0;
+    min-width: 0;
+}
+
+.scrolling {
+    overflow-y: scroll;
+}
+
+.Col {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* border: 1px solid blue; */
+}
+
+.Col-grow-1 {
+    flex-grow: 1;
+}
+
+.Col-grow-2 {
+    flex-grow: 2;
+}
+
+.Col-grow-3 {
+    flex-grow: 3;
+}
+
+.Col-grow-4 {
+    flex-grow: 4;
+}
+
+.Col-auto {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid blue; */
+}
+
+.scrollable-flex-column {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+
+.scrolling-flex-column {
+    flex: 1 1 0px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.InfoTable {
+    display: flex;
+    flex-direction: column;
+}
+
+.InfoTable-row {
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+}
+
+.InfoTable-labelCol {
+    flex: 0 0 auto;
+    font-weight: bold;
+    color: rgba(150, 150, 150, 1);
+}
+
+.InfoTable-dataCol {
+    flex: 1 1 0px;
+    text-align: left;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+/* */
+
+.Nav-box {
+    border: 1px solid rgba(200, 200, 200, 0.5);
+    /* margin: 10px 0; */
+}
+
+.Nav-box-title {
+    font-weight: bold;
+    text-align: center;
+    color: rgba(150, 150, 150, 1);
+}
+
+.Nav-box-auto {
+    flex: 0 0 auto;
+}
+
+.Nav-box-fill {
+    flex: 1 1 0px;
+}
