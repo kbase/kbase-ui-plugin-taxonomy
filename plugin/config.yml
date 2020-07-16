@@ -6,7 +6,7 @@ package:
   type: iframe
 install:
   routes:
-    - path: taxonomy/taxon/:id/:-timestamp?tab=:-tab
+    - path: taxonomy/taxon/:namespace/:id/:-timestamp?tab=:-tab
       view: taxon
       authorization: true
     - path: taxonomy/about
