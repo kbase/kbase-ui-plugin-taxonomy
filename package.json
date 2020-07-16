@@ -1,7 +1,7 @@
 {
-    "name": "kbase-ui-plugin-re-landing-pages",
+    "name": "kbase-ui-plugin-taxonomy",
     "version": "1.0.0",
-    "description": "A kbase-ui plugin providing landing pages for the Relation Engine",
+    "description": "A kbase-ui plugin providing taxon viewing and taxonomy navigation",
     "main": "index.js",
     "devDependencies": {
         "bluebird": "3.7.2",
@@ -15,12 +15,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kbase/kbase-ui-plugin-re-landing-pages.git"
+        "url": "git+https://github.com/kbase/kbase-ui-plugin-taxonomy.git"
     },
     "author": "KBase Developers",
     "license": "SEE LICENSE IN LICENSE.md",
     "bugs": {
-        "url": "https://github.com/kbase/kbase-ui-plugin-re-landing-pages/issues"
+        "url": "https://github.com/kbase/kbase-ui-plugin-taxonomy/issues"
     },
-    "homepage": "https://github.com/kbase/kbase-ui-plugin-re-landing-pages#readme"
+    "homepage": "https://github.com/kbase/kbase-ui-plugin-taxonomy#readme"
 }
