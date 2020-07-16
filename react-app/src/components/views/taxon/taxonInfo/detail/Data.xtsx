@@ -1,0 +1,39 @@
+import React from 'react';
+import DB from './DB';
+import { DBStatus } from '../lib/DB';
+
+import { AppConfig } from '@kbase/ui-components';
+import TaxonInfo from './TaxonInfo';
+import { TaxonID } from '../redux/store';
+
+export interface Props {
+    token: string;
+    config: AppConfig;
+}
+
+interface State {}
+
+export default class Data extends React.Component<Props, State> {
+    db: DB;
+    constructor(props: Props) {
+        super(props);
+        this.db = new DB({
+            onUpdate: () => {
+                this.forceUpdate();
+            },
+            initialData: {
+                status: DBStatus.NONE
+            },
+            token: props.token,
+            config: props.config
+        });
+    }
+
+    fetchTaxa(taxonID: TaxonID, page: number, pageSize: number) {
+        return this.db.fetchTaxon(taxonID);
+    }
+
+    render() {
+        return <TaxonInfo db={this.db.get()} />;
+    }
+}

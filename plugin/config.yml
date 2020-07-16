@@ -1,0 +1,17 @@
+## Plugin Configuration
+---
+package:
+  name: taxonomy
+  description: A plugin providing landing page support for taxonomies
+  type: iframe
+install:
+  routes:
+    - path: taxonomy/taxon/:id/:-timestamp?tab=:-tab
+      view: taxon
+      authorization: true
+    - path: taxonomy/about
+      view: about
+      authorization: false
+    - path: taxonomy/help
+      view: help
+      authorization: false

@@ -1,0 +1,42 @@
+[
+    {
+        "name": "cellular organisms",
+        "id": "131567",
+        "rank": "none"
+    },
+    {
+        "name": "Bacteria",
+        "id": "2",
+        "rank": "superkingdom"
+    },
+    {
+        "name": "Proteobacteria",
+        "id": "1224",
+        "rank": "phylum"
+    },
+    {
+        "name": "Gammaproteobacteria",
+        "id": "1236",
+        "rank": "class"
+    },
+    {
+        "name": "Enterobacterales",
+        "id": "91347",
+        "rank": "order"
+    },
+    {
+        "name": "Enterobacteriaceae",
+        "id": "543",
+        "rank": "family"
+    },
+    {
+        "name": "Escherichia",
+        "id": "561",
+        "rank": "genus"
+    },
+    {
+        "name": "Escherichia coli ",
+        "id": "562",
+        "rank": "species"
+    }
+]

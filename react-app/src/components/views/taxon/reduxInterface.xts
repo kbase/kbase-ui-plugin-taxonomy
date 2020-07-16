@@ -1,0 +1,45 @@
+import { StoreState } from '../../../redux/store';
+import { Dispatch } from 'react';
+import { Action } from 'redux';
+import { connect } from 'react-redux';
+import Taxonomy from './Main';
+import { AppConfig } from '@kbase/ui-components';
+
+interface OwnProps {}
+
+interface StateProps {
+    token: string;
+    config: AppConfig;
+}
+
+interface DispatchProps {}
+
+function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
+    const {
+        auth: { userAuthorization },
+        app: { config }
+    } = state;
+
+    // TODO: implement more gracefully.
+    if (!userAuthorization) {
+        throw new Error('Authorization not present');
+    }
+
+    const { token } = userAuthorization;
+
+    return {
+        token,
+        config
+    };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>, ownProps: OwnProps): DispatchProps {
+    return {};
+}
+
+const c = connect<StateProps, DispatchProps, OwnProps, StoreState>(
+    mapStateToProps,
+    mapDispatchToProps
+)(Taxonomy);
+
+export default c;

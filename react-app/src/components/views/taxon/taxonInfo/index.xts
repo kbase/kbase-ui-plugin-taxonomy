@@ -1,0 +1,33 @@
+import { StoreState, Taxon } from '../../../../redux/store';
+import { Dispatch } from 'react';
+import { Action } from 'redux';
+import { connect } from 'react-redux';
+import TaxonInfo from './TaxonInfo';
+
+interface OwnProps {}
+
+interface StateProps {
+    taxon: Taxon;
+}
+
+interface DispatchProps {}
+
+function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
+    const taxon: Taxon = {
+        name: 'Escherichia coli ',
+        id: '562',
+        rank: 'species'
+    };
+    return {
+        taxon
+    };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>, ownProps: OwnProps): DispatchProps {
+    return {};
+}
+
+export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
+    mapStateToProps,
+    mapDispatchToProps
+)(TaxonInfo);

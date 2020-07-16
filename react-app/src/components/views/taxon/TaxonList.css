@@ -1,0 +1,18 @@
+.TaxonList-target-taxon {
+    font-weight: bold;
+}
+
+.TaxonList-list-item {
+    border: 1px solid red;
+    padding: 8px;
+}
+
+.TaxonList-list-item:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+    cursor: pointer;
+}
+
+.TaxonList-list-item-active,
+.TaxonList-list-item:active {
+    background-color: rgba(200, 200, 200, 1)
+}

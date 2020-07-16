@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+node_modules/
+
+# The built plugin app goes here during a top level build; we don't want to check
+# that is as it is build during install in kbase-ui
+/plugin/iframe_root
+
+# created by npm if install with --no-cache option
+false
+
+# created by yarn, but causes problems with kbase-ui builds.
+yarn.lock
+
+# Artifact of local github pages development
+_site
+
+# Don't check in coverage reports
+coverage
+
+# Put stuff in _trash to move it out of the way, and omit it from the repo 
+# (but keep it locally to support procrastination.)
+_trash
+
+# Don't accidentally commit the dist directory
+/dist/
+
+# IDEs
+.vscode
+
+.yarn-cache/
+_attic/
+_test_data/
+_coverage/
+_temp/
