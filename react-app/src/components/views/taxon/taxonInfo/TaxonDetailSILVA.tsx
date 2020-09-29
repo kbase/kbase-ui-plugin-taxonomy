@@ -15,6 +15,33 @@ export default class TaxonDetailSILVA extends React.Component<TaxonDetailProps, 
             </div>;
         });
     }
+
+    renderSequence() {
+
+        return <div className="InfoTable-dataCol" style={{ wordBreak: 'break-all', fontFamily: 'monospace' }}>
+            {this.props.taxon.sequence}
+        </div>;
+    }
+    renderSequenceColored() {
+        const aColor = '#5050ff';
+        const colors: {
+            [char: string]: string;
+        } = {
+            A: '#5050ff',
+            T: '#e6e600',
+            G: '#00c000',
+            C: '#e00000',
+            U: '#cc9900'
+        };
+        const coloredSequence = this.props.taxon.sequence.split('').map((char) => {
+            return <span style={{ color: colors[char] }}>
+                {char}
+            </span>;
+        });
+        return <div className="InfoTable-dataCol" style={{ wordBreak: 'break-all', fontFamily: 'monospace' }}>
+            {coloredSequence}
+        </div>;
+    }
     renderTaxonDetail() {
         const width = '8em';
         let nameStyle: React.CSSProperties = {};
@@ -47,7 +74,7 @@ export default class TaxonDetailSILVA extends React.Component<TaxonDetailProps, 
                     <div className="InfoTable-labelCol" style={{ width }}>
                         Sequence
                     </div>
-                    <div className="InfoTable-dataCol" style={{ height: '10em', overflowY: 'scroll', wordBreak: 'break-all' }}>{this.props.taxon.sequence}</div>
+                    <div className="InfoTable-dataCol">{this.renderSequenceColored()}</div>
                 </div>
             </div>
         );
