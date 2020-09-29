@@ -17,7 +17,8 @@ export enum RelationEngineDataSource {
     GO = 'GO',
     GTDB = 'GTDB',
     NCBI = 'NCBI',
-    RDP = 'RDP'
+    RDP = 'RDP',
+    SILVA = 'SILVA'
 }
 
 // export type RelationEngineDataSource = 'ncbi_taxonomy' | 'gtdb' | 'rdp_taxonomy';
@@ -63,7 +64,8 @@ export type RelationEngineNamespace =
     'envo_ontology' |
     'ncbi_taxonomy' |
     'gtdb' |
-    'rdp_taxonomy';
+    'rdp_taxonomy' |
+    'silva_taxonomy';
 
 
 
@@ -79,4 +81,5 @@ export type RelationEngineDataSourceId =
     'gtdb' |
     'rdp_taxonomy' |
     'go_ontology' |
-    'envo_ontology';
+    'envo_ontology' |
+    'silva_taxonomy';

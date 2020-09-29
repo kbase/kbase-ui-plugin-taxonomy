@@ -5,7 +5,8 @@ export type DataSource =
     'gtdb' |
     'go_ontology' |
     'envo_ontology' |
-    'rdp_taxonomy';
+    'rdp_taxonomy' |
+    'silva_taxonomy';
 
 
 export type DataSourceCategory = 'taxonomy' | 'ontology';

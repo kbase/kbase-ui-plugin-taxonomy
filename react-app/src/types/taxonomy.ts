@@ -49,7 +49,8 @@ import { RelationEngineDataSource, RelationEngineCategory, RelationEngineReferen
 export type TaxonomyNamespace =
     'gtdb' |
     'ncbi_taxonomy' |
-    'rdp_taxonomy';
+    'rdp_taxonomy' |
+    'silva_taxonomy';
 
 // export type TaxonomyReference =
 //     RelationEngineReferenceG<RelationEngineCategory.TAXONOMY, RelationEngineDataSource.NCBI> |
@@ -72,7 +73,9 @@ export type GTDBTaxonomyReference = TaxonomyReferenceBase<'gtdb'>;
 
 export type RDPTaxonomyReference = TaxonomyReferenceBase<'rdp_taxonomy'>;
 
-export type TaxonomyReference = NCBITaxonomyReference | GTDBTaxonomyReference | RDPTaxonomyReference;
+export type SILVATaxonomyReference = TaxonomyReferenceBase<'silva_taxonomy'>;
+
+export type TaxonomyReference = NCBITaxonomyReference | GTDBTaxonomyReference | RDPTaxonomyReference | SILVATaxonomyReference;
 
 export interface TaxonAlias {
     category: string;
@@ -100,8 +103,17 @@ export interface GTDBTaxon extends TaxonBase {
 
 export interface RDPTaxon extends TaxonBase {
     ref: RDPTaxonomyReference;
+    incertae_sedis: boolean;
+    molecule: string | null;
+    unclassified: boolean;
 }
 
-export type Taxon = NCBITaxon | GTDBTaxon | RDPTaxon;
+export interface SILVATaxon extends TaxonBase {
+    ref: SILVATaxonomyReference;
+    sequence: string;
+    datasets: Array<string>;
+}
+
+export type Taxon = NCBITaxon | GTDBTaxon | RDPTaxon | SILVATaxon;
 
 

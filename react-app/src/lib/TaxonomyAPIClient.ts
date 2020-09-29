@@ -23,7 +23,7 @@ interface GetDescendentsParams {
 
 // type GetTaxonResult = GetTaxonResultSuccess | GetTaxonResultNotFound;
 
-export type Namespace = 'ncbi_taxonomy' | 'gtdb' | 'rdp_taxonomy';
+export type Namespace = 'ncbi_taxonomy' | 'gtdb' | 'rdp_taxonomy' | 'silva_taxonomy';
 
 interface TaxonAlias {
     canonical: Array<string>;
@@ -32,7 +32,6 @@ interface TaxonAlias {
 }
 
 interface TaxonResult {
-    ncbi_taxon_id: number;
     _id: string;
     _key: string;
     _rev: string;
@@ -44,6 +43,12 @@ interface TaxonResult {
     gencode: string;
     rank: string;
     scientific_name: string;
+    ncbi_taxon_id?: number;
+    incertae_sedis?: boolean;
+    molecule?: string | null;
+    unclassified?: boolean;
+    datasets?: Array<string>;
+    sequence?: string;
 }
 
 export interface GetTaxonParams {
