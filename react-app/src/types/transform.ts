@@ -14,8 +14,10 @@ export function relationEngineNamespaceToDataSource(s: core.RelationEngineNamesp
             return core.RelationEngineDataSource.GTDB;
         case 'rdp_taxonomy':
             return core.RelationEngineDataSource.RDP;
-        // default:
-        //     throw new Error('Unrecognized data source: ' + s);
+        case 'silva_taxonomy':
+            return core.RelationEngineDataSource.SILVA;
+        default:
+            throw new Error('Unrecognized data source: ' + s);
     }
 }
 
@@ -60,7 +62,8 @@ export function stringToNamespace(s: string): core.RelationEngineNamespace {
         'envo_ontology',
         'gtdb',
         'ncbi_taxonomy',
-        'rdp_taxonomy'
+        'rdp_taxonomy',
+        'silva_taxonomy'
     ];
     // TODO: i don't like the _as_ :(
     // A verbose alternative is a switch
@@ -142,5 +145,7 @@ export function namespaceToDataSourceId(dataSource: core.RelationEngineNamespace
             return 'go_ontology';
         case 'envo_ontology':
             return 'envo_ontology';
+        case 'silva_taxonomy':
+            return 'silva_taxonomy';
     }
 }

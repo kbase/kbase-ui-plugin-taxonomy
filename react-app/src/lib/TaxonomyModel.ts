@@ -1,4 +1,4 @@
-import { TaxonomyReference, Taxon, NCBITaxon, GTDBTaxon, RDPTaxon } from '../types/taxonomy';
+import { TaxonomyReference, Taxon, NCBITaxon, GTDBTaxon, RDPTaxon, SILVATaxon } from '../types/taxonomy';
 import TaxonomyAPIClient, { Namespace } from './TaxonomyAPIClient';
 import { RelationEngineDataSourceId } from '../types/core';
 import { DynamicServiceConfig } from '@kbase/ui-components/lib/redux/integration/store';
@@ -76,6 +76,8 @@ function namespaceToDataSourceId(namespace: Namespace): RelationEngineDataSource
             return 'gtdb';
         case 'rdp_taxonomy':
             return 'rdp_taxonomy';
+        case 'silva_taxonomy':
+            return 'silva_taxonomy';
     }
 }
 
@@ -124,7 +126,7 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        ncbiID: taxonResult.ncbi_taxon_id,
+                        ncbiID: taxonResult.ncbi_taxon_id!,
                         geneticCode: parseInt(taxonResult.gencode),
                         aliases: taxonResult.aliases.map(({ name, category }) => {
                             return {
@@ -176,10 +178,31 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        isBiological
+                        isBiological,
+                        incertae_sedis: taxonResult.incertae_sedis!,
+                        molecule: taxonResult.molecule! || null,
+                        unclassified: taxonResult.unclassified!
                     };
                 });
                 return rdpTaxon;
+            case 'silva_taxonomy':
+                const silvaTaxon: Array<SILVATaxon> = result.results.map((taxonResult) => {
+                    let isBiological: boolean;
+                    isBiological = true;
+                    return {
+                        ref: {
+                            namespace: 'silva_taxonomy',
+                            id: taxonResult.id,
+                            timestamp: result.ts
+                        },
+                        name: taxonResult.scientific_name,
+                        rank: taxonResult.rank,
+                        isBiological,
+                        datasets: taxonResult.datasets!,
+                        sequence: taxonResult.sequence!
+                    };
+                });
+                return silvaTaxon;
             default:
                 throw new Error('Not a supported taxonomy data source');
         }
@@ -216,7 +239,7 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        ncbiID: taxonResult.ncbi_taxon_id,
+                        ncbiID: taxonResult.ncbi_taxon_id!,
                         geneticCode: parseInt(taxonResult.gencode),
                         aliases: taxonResult.aliases.map(({ name, category }) => {
                             return {
@@ -254,10 +277,29 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        isBiological
+                        isBiological,
+                        incertae_sedis: taxonResult.incertae_sedis!,
+                        molecule: taxonResult.molecule! || null,
+                        unclassified: taxonResult.unclassified!
                     };
                 });
                 return [rdpTaxa, result.total_count];
+            case 'silva_taxonomy':
+                const silvaTaxa: Array<SILVATaxon> = result.results.map((taxonResult) => {
+                    return {
+                        ref: {
+                            namespace: taxonRef.namespace,
+                            id: taxonResult.id,
+                            timestamp: result.ts
+                        },
+                        name: taxonResult.scientific_name,
+                        rank: taxonResult.rank,
+                        isBiological: true,
+                        datasets: taxonResult.datasets!,
+                        sequence: taxonResult.sequence!
+                    };
+                });
+                return [silvaTaxa, result.total_count];
             default:
                 throw new Error('Not a supported taxonomy data source');
         }
@@ -295,7 +337,7 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        ncbiID: taxonResult.ncbi_taxon_id,
+                        ncbiID: taxonResult.ncbi_taxon_id!,
                         geneticCode: parseInt(taxonResult.gencode),
                         aliases: taxonResult.aliases.map(({ name, category }) => {
                             return {
@@ -330,10 +372,27 @@ export class TaxonomyModel {
                         },
                         name: taxonResult.scientific_name,
                         rank: taxonResult.rank,
-                        isBiological: true
+                        isBiological: true,
+                        incertae_sedis: taxonResult.incertae_sedis!,
+                        molecule: taxonResult.molecule! || null,
+                        unclassified: taxonResult.unclassified!
                     };
                 })();
-
+            case 'silva_taxonomy':
+                return ((): SILVATaxon => {
+                    return {
+                        ref: {
+                            namespace: 'silva_taxonomy',
+                            id: taxonResult.id,
+                            timestamp: result.ts
+                        },
+                        name: taxonResult.scientific_name,
+                        rank: taxonResult.rank,
+                        isBiological: true,
+                        datasets: taxonResult.datasets!,
+                        sequence: taxonResult.sequence!
+                    };
+                })();
             default:
                 throw new Error('Unsupported taxonomy data source');
         }

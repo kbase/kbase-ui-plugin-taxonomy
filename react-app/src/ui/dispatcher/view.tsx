@@ -30,6 +30,8 @@ function stringToNamespace(s: string): TaxonomyNamespace {
             return 'gtdb';
         case 'rdp_taxonomy':
             return 'rdp_taxonomy';
+        case 'silva_taxonomy':
+            return 'silva_taxonomy';
         default:
             throw Error(`Not a taxonomy namespace: ${s}`);
     }
