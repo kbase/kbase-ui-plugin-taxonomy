@@ -9,6 +9,9 @@ interface TaxonDetailState { }
 
 export default class TaxonDetailSILVA extends React.Component<TaxonDetailProps, TaxonDetailState> {
     renderDatasets() {
+        if (!this.props.taxon.datasets) {
+            return <div>-</div>;
+        }
         return this.props.taxon.datasets.map((dataset) => {
             return <div>
                 {dataset}
@@ -17,13 +20,18 @@ export default class TaxonDetailSILVA extends React.Component<TaxonDetailProps, 
     }
 
     renderSequence() {
-
+        if (!this.props.taxon.sequence) {
+            return <div>-</div>;
+        }
         return <div className="InfoTable-dataCol" style={{ wordBreak: 'break-all', fontFamily: 'monospace' }}>
             {this.props.taxon.sequence}
         </div>;
     }
     renderSequenceColored() {
-        const aColor = '#5050ff';
+        if (!this.props.taxon.sequence) {
+            return <div>-</div>;
+        }
+        // see DRuMS Color Schemes: https://www.umass.edu/molvis/drums/nochime/1152/fs.html
         const colors: {
             [char: string]: string;
         } = {

@@ -110,7 +110,7 @@ export interface RDPTaxon extends TaxonBase {
 
 export interface SILVATaxon extends TaxonBase {
     ref: SILVATaxonomyReference;
-    sequence: string;
+    sequence?: string;
     datasets: Array<string>;
 }
 
