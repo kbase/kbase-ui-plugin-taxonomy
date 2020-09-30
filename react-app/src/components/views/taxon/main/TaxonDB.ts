@@ -5,7 +5,7 @@ import DB, {
 import { AppConfig } from '@kbase/ui-components';
 import { Taxon, TaxonomyReference } from '../../../../types/taxonomy';
 import { TaxonomyModel } from '../../../../lib/TaxonomyModel';
-import { DataSourceInfo } from '../../../../lib/RelationEngineAPIClient';
+import { Source } from '../../../../lib/TaxonomyAPIClient';
 
 export type TaxonDBStateNone = DBStateNone;
 export type TaxonDBStateLoading = DBStateLoading;
@@ -14,7 +14,7 @@ export type TaxonDBStateError = DBStateError;
 export interface TaxonDBStateLoaded extends DBStateLoaded {
     targetTaxon: Taxon;
     selectedTaxon: Taxon;
-    dataSourceInfo: DataSourceInfo;
+    dataSourceInfo: Source;
 }
 
 export type TaxonDBState = TaxonDBStateNone | TaxonDBStateLoading | TaxonDBStateLoaded | TaxonDBStateError;

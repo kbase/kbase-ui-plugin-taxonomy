@@ -7,14 +7,15 @@ import { Taxon, TaxonomyReference } from '../../../../types/taxonomy';
 import { Row, Col } from 'antd';
 import TaxonInfo from '../taxonInfo/TaxonInfo';
 import './Taxonomy.css';
-import { DataSourceInfo } from '../../../../lib/RelationEngineAPIClient';
+import { Source } from '../../../../lib/TaxonomyAPIClient';
+// import { DataSourceInfo } from '../../../../lib/RelationEngineAPIClient';
 
 
 export interface TaxonomyProps {
     // lineage: Array<Taxon>;
     selectedTaxon: Taxon;
     targetTaxon: Taxon;
-    dataSource: DataSourceInfo;
+    dataSource: Source;
     selectTaxonRef: (taxonRef: TaxonomyReference) => void;
     navigateToTaxonRef: (taxonRef: TaxonomyReference) => void;
     setTitle: (title: string) => void;
@@ -27,7 +28,7 @@ export default class Taxonomy extends React.Component<TaxonomyProps, TaxonomySta
         if (!this.props.selectedTaxon) {
             return <div>No taxon selected</div>;
         }
-        return <TaxonInfo taxon={this.props.selectedTaxon} />;
+        return <TaxonInfo taxon={this.props.selectedTaxon} source={this.props.dataSource} />;
         // return 'disabled';
     }
 

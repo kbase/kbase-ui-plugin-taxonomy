@@ -82,38 +82,90 @@ export interface TaxonAlias {
     name: string;
 }
 
-export interface TaxonBase {
+// export interface TaxonBase {
+//     ref: TaxonomyReference,
+//     name: string;
+//     rank: string;
+//     isBiological: boolean;
+// }
+
+
+// export interface NCBITaxon extends TaxonBase {
+//     ref: NCBITaxonomyReference;
+//     ncbiID: number;
+//     geneticCode: number;
+//     aliases: Array<TaxonAlias>;
+// }
+
+// export interface GTDBTaxon extends TaxonBase {
+//     ref: GTDBTaxonomyReference;
+// }
+
+// export interface RDPTaxon extends TaxonBase {
+//     ref: RDPTaxonomyReference;
+//     incertae_sedis: boolean;
+//     molecule: string | null;
+//     unclassified: boolean;
+// }
+
+// export interface SILVATaxon extends TaxonBase {
+//     ref: SILVATaxonomyReference;
+//     sequence?: string;
+//     datasets: Array<string>;
+// }
+
+// export type Taxon = NCBITaxon | GTDBTaxon | RDPTaxon | SILVATaxon;
+
+export interface TaxonMetadataBase {
+    id: string;
+    label: string;
+    tooltip: string;
+    type: string;
+}
+
+export interface TaxonMetadataString extends TaxonMetadataBase {
+    type: 'string',
+    value: string | null;
+}
+
+export interface TaxonMetadataSequence extends TaxonMetadataBase {
+    type: 'sequence',
+    value: string | null;
+}
+
+export interface TaxonMetadataBoolean extends TaxonMetadataBase {
+    type: 'boolean',
+    value: boolean | null;
+}
+
+export interface TaxonMetadataNumber extends TaxonMetadataBase {
+    type: 'number',
+    value: number | null;
+}
+
+export interface TaxonMetadataArrayOfString extends TaxonMetadataBase {
+    type: 'array<string>',
+    value: Array<string> | null;
+}
+
+export interface TaxonMetadataArrayOfAlias extends TaxonMetadataBase {
+    type: 'array<alias>',
+    value: Array<TaxonAlias> | null;
+}
+
+export type TaxonMetadata =
+    TaxonMetadataString |
+    TaxonMetadataBoolean |
+    TaxonMetadataNumber |
+    TaxonMetadataArrayOfString |
+    TaxonMetadataArrayOfAlias |
+    TaxonMetadataSequence;
+
+export interface Taxon {
     ref: TaxonomyReference,
     name: string;
     rank: string;
-    isBiological: boolean;
+    // isBiological: boolean;
+    metadata: Array<TaxonMetadata>;
 }
-
-
-export interface NCBITaxon extends TaxonBase {
-    ref: NCBITaxonomyReference;
-    ncbiID: number;
-    geneticCode: number;
-    aliases: Array<TaxonAlias>;
-}
-
-export interface GTDBTaxon extends TaxonBase {
-    ref: GTDBTaxonomyReference;
-}
-
-export interface RDPTaxon extends TaxonBase {
-    ref: RDPTaxonomyReference;
-    incertae_sedis: boolean;
-    molecule: string | null;
-    unclassified: boolean;
-}
-
-export interface SILVATaxon extends TaxonBase {
-    ref: SILVATaxonomyReference;
-    sequence?: string;
-    datasets: Array<string>;
-}
-
-export type Taxon = NCBITaxon | GTDBTaxon | RDPTaxon | SILVATaxon;
-
 
