@@ -9,21 +9,21 @@ export interface TaxonDescriptionProps {
 interface TaxonDescriptionState { }
 
 export default class TaxonDescription extends React.Component<TaxonDescriptionProps, TaxonDescriptionState> {
-    renderTaxonDescription() {
-        return <Wikipedia term={this.props.taxon.name} />;
-    }
+    // renderTaxonDescription() {
+    //     return <Wikipedia term={this.props.taxon.name} />;
+    // }
 
     /**
      * Intercept nodes which don't have a widely known biological association with
      * the node name ("scientific name"), and for which a wikipedia lookup would not
      * be very useful.
      */
-    notBiological() {
+    render() {
         switch (this.props.taxon.name) {
             case 'root':
                 return (
                     <div>
-                        <p>This taxon is the topmost node in the NCBI Taxonomy tree.</p>
+                        <p>This taxon is the topmost node in the taxonomy tree.</p>
                     </div>
                 );
             case 'cellular organisms':
@@ -33,18 +33,14 @@ export default class TaxonDescription extends React.Component<TaxonDescriptionPr
                     </div>
                 );
             default:
-                return (
-                    <div>
-                        <p>Unknown non-biological taxon.</p>
-                    </div>
-                );
+                return <Wikipedia term={this.props.taxon.name} />;
         }
     }
 
-    render() {
-        if (this.props.taxon.isBiological) {
-            return <div className="Col scrollable">{this.renderTaxonDescription()}</div>;
-        }
-        return this.notBiological();
-    }
+    // render() {
+    //     if (this.props.taxon.isBiological) {
+    //         return <div className="Col scrollable">{this.renderTaxonDescription()}</div>;
+    //     }
+    //     return this.notBiological();
+    // }
 }

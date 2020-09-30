@@ -4,10 +4,12 @@ import TaxonDetail from './TaxonDetail';
 import TaxonDescription from './TaxonDescription';
 import LinkedData from './linkedData';
 import { Taxon } from '../../../../types/taxonomy';
+import { Source } from '../../../../lib/TaxonomyAPIClient';
 
 
 export interface TaxonInfoProps {
     taxon: Taxon;
+    source: Source;
 }
 
 interface TaxonInfoState { }
@@ -18,7 +20,7 @@ export default class TaxonInfo extends React.Component<TaxonInfoProps, TaxonInfo
             <Tabs defaultActiveKey="detail" animated={false} className="FullHeight-tabs" type="card">
                 <Tabs.TabPane tab="Detail" key="detail" forceRender={false}>
                     <div className="Col" style={{ overflowY: 'auto' }}>
-                        <TaxonDetail taxon={this.props.taxon} />
+                        <TaxonDetail taxon={this.props.taxon} source={this.props.source} />
                     </div>
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Description" key="description" forceRender={false}>

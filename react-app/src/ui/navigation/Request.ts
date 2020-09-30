@@ -86,7 +86,7 @@ export default class RequestFetcher {
 
         // Extract out the standard bits from the format:
         // plugin/view/rest
-        const [plugin, view, ...rest] = path;
+        const [plugin, view] = path;
 
         return {
             hash,

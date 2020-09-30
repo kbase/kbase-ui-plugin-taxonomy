@@ -1,10 +1,10 @@
 import React from 'react';
 import './SourceInfo.css';
-import { DataSourceInfo } from '../../../lib/RelationEngineAPIClient';
 import { Tooltip } from 'antd';
+import { Source } from '../../../lib/TaxonomyAPIClient';
 
 export interface SourceInfoProps {
-    dataSource: DataSourceInfo;
+    dataSource: Source;
 }
 
 interface SourceInfoState { }
