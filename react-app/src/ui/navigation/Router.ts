@@ -267,17 +267,6 @@ export class Router {
 
         const { route, params } = this.processPath(request.path);
 
-        // if (!route) {
-        //     // throw new NotFoundException({
-        //     //     request,
-        //     //     params: {},
-        //     //     hash: request.hash,
-        //     //     path: request.path.join('/'),
-        //     //     message: 'Not found'
-        //     // });
-        //     return {};
-        // }
-
         const queryParams = this.processQuery(route, request.query);
 
         // Now we handle fixed params; this operates a bit like props. They are specified

@@ -1,88 +1,9 @@
 import { DynamicServiceClient, DynamicServiceClientParams } from '@kbase/ui-lib';
+import sourcesData from './sources.json';
 
-const SOURCES: Array<Source> = [
-    {
-        id: 'ncbi',
-        namespace: 'ncbi_taxonomy',
-        data_url: 'ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/',
-        home_url: 'https://www.ncbi.nlm.nih.gov/taxonomy',
-        logo_url: 'https://ci.kbase.us/ui-assets/images/third-party-data-sources/ncbi/logo-51-64.png',
-        title: 'NCBI',
-        fields: [{
-            id: 'ncbi_taxon_id',
-            type: 'number',
-            label: 'NCBI ID',
-            tooltip: 'ID for this taxon at NCBI',
-            description: ''
-        }, {
-            id: 'gencode',
-            type: 'number',
-            label: 'Genetic Code',
-            tooltip: 'NCBI Genetic code',
-            description: ''
-        }, {
-            id: 'aliases',
-            type: 'array<alias>',
-            label: 'Aliases',
-            tooltip: 'Aliases for this taxon',
-            description: ''
-        }]
-    }, {
-        id: 'gtdb',
-        namespace: 'gtdb',
-        data_url: 'https://data.ace.uq.edu.au/public/gtdb/data/releases/',
-        home_url: 'https://gtdb.ecogenomic.org',
-        logo_url: 'https://ci.kbase.us/ui-assets/images/third-party-data-sources/gtdb/logo-128-64.png',
-        title: 'GTDB Taxonomy',
-        fields: []
-    }, {
-        id: 'rdp',
-        namespace: 'rdp_taxonomy',
-        data_url: 'http://rdp.cme.msu.edu/misc/resources.jsp',
-        home_url: 'http://rdp.cme.msu.edu/taxomatic/main.spr',
-        logo_url: 'http://rdp.cme.msu.edu/images/rdpinsider108x81.png',
-        title: 'Ribosomal Database Project',
-        fields: [{
-            id: 'incertae_sedis',
-            type: 'boolean',
-            label: 'Incertae Sedis?',
-            tooltip: 'ID for this taxon at NCBI',
-            description: 'Indicates a taxonomic group where its broader relationships are unknown or undefined'
-        }, {
-            id: 'molecule',
-            type: 'string',
-            label: 'Molecule',
-            tooltip: '',
-            description: ''
-        }, {
-            id: 'unclassified',
-            type: 'boolean',
-            label: 'Unclassified?',
-            tooltip: '',
-            description: ''
-        }]
-    }, {
-        id: 'silva',
-        namespace: 'silva_taxonomy',
-        data_url: 'https://arb-silva.de/no_cache/download/archive/',
-        home_url: 'https://arb-silva.de',
-        logo_url: 'https://www.arb-silva.de/fileadmin/graphics_general/main/logos/silva-subtitle.svg',
-        title: 'SILVA Taxonomy',
-        fields: [{
-            id: 'datasets',
-            type: 'array<string>',
-            label: 'Data Sets',
-            tooltip: '',
-            description: ''
-        }, {
-            id: 'sequence',
-            type: 'sequence',
-            label: 'Sequence',
-            tooltip: '',
-            description: ''
-        }]
-    }
-];
+export type Sources = Array<Source>;
+
+const SOURCES: Array<Source> = sourcesData as Array<Source>;
 
 export interface SourceMap {
     [id: string]: Source;
@@ -117,26 +38,6 @@ interface TaxonAlias {
     category: string;
     name: string;
 }
-
-// interface TaxonResult {
-//     _id: string;
-//     _key: string;
-//     _rev: string;
-//     id: string;
-//     ns: string;
-//     ts: number;
-//     aliases: Array<TaxonAlias>;
-//     canonical_scientific_name: Array<string>;
-//     gencode: string;
-//     rank: string;
-//     scientific_name: string;
-//     ncbi_taxon_id?: number;
-//     incertae_sedis?: boolean;
-//     molecule?: string | null;
-//     unclassified?: boolean;
-//     datasets?: Array<string>;
-//     sequence?: string;
-// }
 
 type TaxonResult = any;
 
@@ -277,7 +178,17 @@ export interface Source {
     data_url: string;
     home_url: string;
     logo_url: string;
+    license: {
+        url: string;
+        label: string;
+    } | null;
+    item_link: {
+        template: string;
+        label: string;
+    } | null;
+    citation: string;
     title: string;
+    short_title: string;
     fields: Array<SourceFieldDefinition>;
 }
 

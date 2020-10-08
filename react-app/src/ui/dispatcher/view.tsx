@@ -23,18 +23,7 @@ const routes: Array<RouteConfig> = [
 ];
 
 function stringToNamespace(s: string): TaxonomyNamespace {
-    switch (s) {
-        case 'ncbi_taxonomy':
-            return 'ncbi_taxonomy';
-        case 'gtdb':
-            return 'gtdb';
-        case 'rdp_taxonomy':
-            return 'rdp_taxonomy';
-        case 'silva_taxonomy':
-            return 'silva_taxonomy';
-        default:
-            throw Error(`Not a taxonomy namespace: ${s}`);
-    }
+    return s;
 }
 
 export interface ViewRouter {

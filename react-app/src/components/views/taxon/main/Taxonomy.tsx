@@ -45,7 +45,7 @@ export default class Taxonomy extends React.Component<TaxonomyProps, TaxonomySta
                             <TaxonSummary taxon={this.props.targetTaxon} />
                         </Col>
                         <Col span={12}>
-                            <SourceInfo dataSource={this.props.dataSource} />
+                            <SourceInfo source={this.props.dataSource} />
                         </Col>
                     </Row>
                 </div>
