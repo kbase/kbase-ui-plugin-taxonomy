@@ -137,6 +137,7 @@ export class TaxonomyModel {
 
         // TODO: Based on the source, pluck off the extra fields and place into 
         // the metadata
+
         return [
             result.results.map((taxonResult) => {
                 const metadata: Array<TaxonMetadata> = source.fields

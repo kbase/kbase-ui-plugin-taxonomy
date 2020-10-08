@@ -35,8 +35,8 @@ export default class TaxonDetail extends React.Component<TaxonDetailProps, Taxon
             C: '#e00000',
             U: '#cc9900'
         };
-        const coloredSequence = sequence.split('').map((char) => {
-            return <span style={{ color: colors[char] }}>
+        const coloredSequence = sequence.split('').map((char, index) => {
+            return <span style={{ color: colors[char] }} key={index} >
                 {char}
             </span>;
         });
@@ -77,7 +77,7 @@ export default class TaxonDetail extends React.Component<TaxonDetailProps, Taxon
             return na();
         }
         return metadatum.value.map((item) => {
-            return <div>
+            return <div key={item}>
                 {item}
             </div>;
         });
