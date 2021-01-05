@@ -21,6 +21,7 @@ export default class Lineage extends React.Component<Props, State> {
                 navigateToTaxonRef={this.props.navigateToTaxonRef}
                 totalItems={this.props.lineage.length}
                 maxItems={10}
+                itemNoun={{ singular: 'Ancestor', plural: 'Ancestors' }}
             />
         );
     }
