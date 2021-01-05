@@ -4,11 +4,16 @@ import './TaxonList.css';
 import TaxonItem from './TaxonItem';
 import { Empty } from 'antd';
 
+export interface Noun {
+    singular: string,
+    plural: string;
+}
 export interface Props {
     taxa: Array<Taxon>;
     maxItems: number;
     totalItems: number;
     selectedTaxonRef: TaxonomyReference | null;
+    itemNoun: Noun;
     selectTaxonRef: (ref: TaxonomyReference) => void;
     navigateToTaxonRef: (ref: TaxonomyReference) => void;
 }
@@ -38,7 +43,7 @@ export default class TaxonList extends React.Component<Props, State> {
         });
     }
     renderNoItems() {
-        return <Empty description="No Children" image={Empty.PRESENTED_IMAGE_SIMPLE} />;
+        return <Empty description={`No ${this.props.itemNoun.plural}`} image={Empty.PRESENTED_IMAGE_SIMPLE} />;
     }
     render() {
         if (this.props.taxa.length === 0) {

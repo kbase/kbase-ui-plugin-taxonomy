@@ -36,16 +36,11 @@ export default class TaxonChildren extends React.Component<Props, State> {
     componentDidMount() {
         this.props.fetchChildren(this.props.taxonRef, 1, DEFAULT_PAGE_SIZE, '');
     }
-    renderTaxaNone() {
-        return <div>None</div>;
-    }
-    renderTaxaLoading() {
-        return <Spin />;
-    }
+
 
     renderTitleLoaded(db: TaxonDBStateLoaded | TaxonDBStateReLoading) {
         if (db.total === 0) {
-            return <div className="Col-auto TaxonChildren-box-title">No Children</div>;
+            return <div className="Col-auto TaxonChildren-box-title"></div>;
         }
 
         const totalCount = Intl.NumberFormat('en-US', {
@@ -55,14 +50,14 @@ export default class TaxonChildren extends React.Component<Props, State> {
         const lastItem = currentItem + db.taxa.length - 1;
 
         return (
-            <div className="Col-auto TaxonChildren-box-title">
+            <div>
                 Children ({currentItem}-{lastItem} of {totalCount})
             </div>
         );
     }
 
     renderTitleReLoading(db: TaxonDBStateReLoading) {
-        return <Spin size="small">{this.renderTitleLoaded(db)}</Spin>;
+        return <div>{this.renderTitleLoaded(db)}</div>;
     }
 
     renderTitle() {
@@ -70,7 +65,7 @@ export default class TaxonChildren extends React.Component<Props, State> {
         switch (db.status) {
             case DBStatus.NONE:
             case DBStatus.LOADING:
-                return <div>Loading...</div>;
+                return <div>Children (loading...)</div>;
             case DBStatus.ERROR:
                 return <ErrorView error={db.error} />;
             case DBStatus.LOADED:
@@ -93,6 +88,13 @@ export default class TaxonChildren extends React.Component<Props, State> {
             </div>
         );
     }
+
+    renderTaxaNone() {
+        return <div>None</div>;
+    }
+    renderTaxaLoading() {
+        return <div style={{ textAlign: 'center' }}><Spin tip="Loading" /></div>;
+    }
     renderTaxaLoaded(db: TaxonDBStateLoaded | TaxonDBStateReLoading) {
         return (
             <React.Fragment>
@@ -103,6 +105,7 @@ export default class TaxonChildren extends React.Component<Props, State> {
                     navigateToTaxonRef={this.props.navigateToTaxonRef}
                     totalItems={db.total}
                     maxItems={DEFAULT_PAGE_SIZE}
+                    itemNoun={{ singular: 'Child', plural: 'Children' }}
                 />
             </React.Fragment>
         );
@@ -187,7 +190,7 @@ export default class TaxonChildren extends React.Component<Props, State> {
     renderChildren() {
         return (
             <div className="TaxonChildren">
-                {this.renderTitle()}
+                <div className="Col-auto TaxonChildren-box-title">{this.renderTitle()}</div>
                 {this.renderSearch()}
                 {this.renderPagination()}
                 {this.renderTaxa()}

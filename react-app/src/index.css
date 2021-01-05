@@ -134,6 +134,10 @@ code {
     color: rgba(150, 150, 150, 1);
 }
 
+.InfoTable-row.-section .InfoTable-labelCol {
+    text-decoration: underline;
+}
+
 .InfoTable-dataCol {
     flex: 1 1 0px;
     text-align: left;

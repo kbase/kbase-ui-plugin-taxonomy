@@ -188,10 +188,10 @@ export default class TaxonDetail extends React.Component<TaxonDetailProps, Taxon
                     </div>
                     <div className="InfoTable-dataCol">{this.props.taxon.rank}</div>
                 </div>
-                <div className="InfoTable-row" key="metadata-header" style={{ marginTop: '20px' }}>
+                <div className="InfoTable-row -section" key="metadata-header" style={{ marginTop: '20px' }}>
                     <div className="InfoTable-labelCol" style={{ width }}>
                         Metadata
-                </div>
+                    </div>
                     <div className="InfoTable-dataCol"></div>
                 </div>
                 {this.renderMetadata()}
