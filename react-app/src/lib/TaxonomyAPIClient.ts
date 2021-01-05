@@ -1,4 +1,4 @@
-import { DynamicServiceClient, DynamicServiceClientParams } from '@kbase/ui-lib';
+import { DynamicServiceClient } from '@kbase/ui-lib';
 import sourcesData from './sources.json';
 
 export type Sources = Array<Source>;
@@ -19,25 +19,25 @@ const SOURCES_NAMESPACE_MAP = SOURCES.reduce<SourceMap>((map, source) => {
     return map;
 }, {});
 
-interface TaxonomyAPIParams extends DynamicServiceClientParams { }
+// interface TaxonomyAPIParams extends DynamicServiceClientParams { }
 
 type TaxonID = string;
 
-interface GetAncestorsParams {
-    id: TaxonID;
-}
+// interface GetAncestorsParams {
+//     id: TaxonID;
+// }
 
-interface GetDescendentsParams {
-    id: TaxonID;
-}
+// interface GetDescendentsParams {
+//     id: TaxonID;
+// }
 
 export type Namespace = string;
 
-interface TaxonAlias {
-    canonical: Array<string>;
-    category: string;
-    name: string;
-}
+// interface TaxonAlias {
+//     canonical: Array<string>;
+//     category: string;
+//     name: string;
+// }
 
 type TaxonResult = any;
 
@@ -153,7 +153,6 @@ export interface GetChildrenParams {
     limit: number;
     search_text: string;
 }
-
 export interface GetAssociatedWorkspaceObjectsParams {
     ns: string;
     id: TaxonID;
@@ -211,27 +210,20 @@ export default class TaxonomyAPIClient extends DynamicServiceClient {
         ts,
         offset,
         limit,
-        searchTerm
-    }: {
-        ns: string,
-        id: TaxonID,
-        ts?: number,
-        offset: number,
-        limit: number,
-        searchTerm: string;
-    }): Promise<GetChildrenResult> {
+        search_text
+    }: GetChildrenParams): Promise<GetChildrenResult> {
         const [result] = await this.callFunc<[GetChildrenParams], [any]>('get_children', [
             {
                 ns, id, ts,
                 offset,
                 limit,
-                search_text: searchTerm
+                search_text
             }
         ]);
         return result as GetChildrenResult;
     }
 
-    async get_taxon({ ns, id, ts }: { ns: string, id: TaxonID, ts?: number; }): Promise<GetTaxonResult> {
+    async get_taxon({ ns, id, ts }: GetTaxonParams): Promise<GetTaxonResult> {
         const params: GetTaxonParams = {
             ns, id, ts
         };
@@ -248,13 +240,7 @@ export default class TaxonomyAPIClient extends DynamicServiceClient {
         ts,
         offset,
         limit
-    }: {
-        ns: string,
-        id: TaxonID,
-        ts?: number,
-        offset: number,
-        limit: number;
-    }): Promise<GetAssociatedWorkspaceObjectsResult> {
+    }: GetAssociatedWorkspaceObjectsParams): Promise<GetAssociatedWorkspaceObjectsResult> {
         const params: GetAssociatedWorkspaceObjectsParams = {
             ns, id, ts, limit, offset
         };

@@ -18,10 +18,6 @@ export interface NavigationListenerProps {
 interface NavigationListenerState {
 }
 
-interface Params {
-    [k: string]: string;
-};
-
 export default class NavigationListener extends React.Component<NavigationListenerProps, NavigationListenerState> {
     storeUnsubscribe: Unsubscribe | null;
     last: Navigation;

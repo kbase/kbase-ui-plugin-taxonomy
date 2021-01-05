@@ -1,6 +1,6 @@
 import React from 'react';
 import { Taxon } from '../../../../types/taxonomy';
-import Wikipedia from '../../../../components/Wikipedia';
+import Wikipedia from '../../../Wikipedia';
 
 export interface TaxonDescriptionProps {
     taxon: Taxon;

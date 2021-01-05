@@ -126,7 +126,7 @@ export class TaxonomyModel {
             ts: timestamp,
             offset: options.offset,
             limit: options.limit,
-            searchTerm: options.searchTerm
+            search_text: options.searchTerm
         });
 
         const source = await this.taxonomyClient.get_source({
