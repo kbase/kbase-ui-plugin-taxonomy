@@ -27,3 +27,10 @@ export interface ErrorState {
 export interface LoadedState {
     status: LoadingStatus.LOADED;
 }
+
+
+export interface SimpleError {
+    message: string;
+}
+
+
