@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert } from 'antd';
-import Loading from '../../ui/Loading';
+import Loading from 'ui/Loading';
 
 import WikipediaClient, { WikipediaInfo } from './WikipediaClient';
 import {
