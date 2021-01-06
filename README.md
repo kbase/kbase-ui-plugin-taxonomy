@@ -9,8 +9,6 @@ The canonical home for it is https://narrative.kbase.us#taxonomy, but that won't
 
 Currently the Taxonomy plugin supports [NCBI](https://www.ncbi.nlm.nih.gov/taxonomy),  [GTDB](https://gtdb.ecogenomic.org), and [RDP](https://rdp.cme.msu.edu/index.jsp), [SILVA](https://www.arb-silva.de) taxonomies.
 
-
-
 ## Usage
 
 As a kbase-ui plugin, the taxonomy landing page is invoked with a base of `https://ENV.kbase.us`, where `ENV` is the deployment environment such as `narrative` for production, and a path formed by the url fragment, commonly know as the _hash_ due to the usage of the `#` character to prefix it, the base of which is `#taxonomy`
