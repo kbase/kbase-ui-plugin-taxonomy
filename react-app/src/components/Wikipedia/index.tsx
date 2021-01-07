@@ -61,7 +61,9 @@ export default class WikipediaLoader extends React.Component<WikipediaLoaderProp
                 }
                 return this.setState({
                     state: AsyncComponentState.ERROR,
-                    error: err.message
+                    error: {
+                        message: err.message
+                    }
                 });
             });
     }
